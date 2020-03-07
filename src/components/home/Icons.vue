@@ -23,64 +23,11 @@ export default {
         pagination: {
           el: ".swiper-pagination"
         }
-      },
-      iconsList: [
-        {
-          id: "001",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",
-          imgDesc: "景点门票"
-        },
-        {
-          id: "002",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png",
-          imgDesc: "一日游"
-        },
-        {
-          id: "003",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png",
-          imgDesc: "滑雪季"
-        },
-        {
-          id: "004",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1803/bd/9f7b9b2b60c1502.png",
-          imgDesc: "泡温泉"
-        },
-        {
-          id: "005",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1803/fc/b10a6b2e4f0fe102.png",
-          imgDesc: "动物园"
-        },
-        {
-          id: "006",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",
-          imgDesc: "植物园"
-        },
-        {
-          id: "007",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",
-          imgDesc: "游乐园"
-        },
-        {
-          id: "008",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",
-          imgDesc: "民宿"
-        },
-        {
-          id: "009",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",
-          imgDesc: "民宿"
-        }
-      ]
+      }
     };
+  },
+  props: {
+    iconsList: Array
   },
   computed: {
     pages() {

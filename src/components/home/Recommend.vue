@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="title border-bottom">热销推荐</div>
-    <ul v-for="item in itemsList" :key="item.id">
+    <ul v-for="item in recommendList" :key="item.id">
       <li class="item">
         <div class="item-img-wrapper">
           <img :src="item.imgUrl" alt class="item-img" />
@@ -19,32 +19,8 @@
 <script>
 export default {
   name: "recommend",
-  data() {
-    return {
-      itemsList: [
-        {
-          id: "001",
-          imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1810/cc/cc47164357acbeb5a3.water.jpg_200x200_151f0405.jpg",
-          title: "杭州云曼温泉",
-          desc: "1127条评论"
-        },
-        {
-          id: "002",
-          imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1810/cc/cc47164357acbeb5a3.water.jpg_200x200_151f0405.jpg",
-          title: "杭州云曼温泉",
-          desc: "1127条评论"
-        },
-        {
-          id: "003",
-          imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1810/cc/cc47164357acbeb5a3.water.jpg_200x200_151f0405.jpg",
-          title: "杭州云曼温泉",
-          desc: "1127条评论"
-        }
-      ]
-    };
+  props: {
+    recommendList: Array
   }
 };
 </script>

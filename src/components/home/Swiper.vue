@@ -1,7 +1,7 @@
 <template>
   <!-- wrapper是为了防止布局抖动 -->
   <div class="wrapper">
-    <swiper :options="swiperOption">
+    <swiper :options="swiperOption" v-if="showSwiper">
       <!-- slides -->
 
       <swiper-slide v-for="item of swiperList" :key="item.id">
@@ -28,24 +28,23 @@ export default {
       swiperOption: {
         loop: true, //设置图片循环
         autoplay: true, //设置可自动播放
-        speed: 800, //自动播放的速度，每隔1秒滑动一次
+        speed: 100, //自动播放的速度，每隔1秒滑动一次
 
         pagination: {
           el: ".swiper-pagination", //分页器的类名
           clickable: true //设置分页小圆点可手动点击
         }
-      },
-      swiperList: [
-        {
-          id: "001",
-          imgUrl: "https://dimg04.c-ctrip.com/images/zg0j1d000001e8gif1020.jpg"
-        },
-        {
-          id: "002",
-          imgUrl: "https://dimg04.c-ctrip.com/images/zg0c1e000001eya7aCF69.jpg"
-        }
-      ]
+      }
     };
+  },
+  props: {
+    swiperList: Array
+  },
+  // 在轮播图Swiper这个组件中，轮播的第一张图却是整个循环列表中的最后一张，这是因为swiper初始化创建是根据空数组创建的，只要让swiper创建的时候是一个最终数组而不是一个空数组就可以了，所以在Swiper标签上加v-if=‘swiperList.length’就可以了
+  computed: {
+    showSwiper: function() {
+      return this.swiperList.length;
+    }
   }
 };
 </script>

@@ -2,7 +2,7 @@
   <div class="head">
     <city-header></city-header>
     <city-search></city-search>
-    <city-list></city-list>
+    <city-list :cities="cities" :hotCities="hotCities"></city-list>
     <city-alphabet></city-alphabet>
   </div>
 </template>
@@ -20,6 +20,33 @@ export default {
     CitySearch,
     CityList,
     CityAlphabet
+  },
+  data() {
+    return {
+      cities: {},
+      hotCities: []
+    };
+  },
+  methods: {
+    getCityInfo() {
+      this.axios
+        .get("/mock/city.json")
+        .then(res => {
+          // console.log(res);
+          res = res.data;
+          if (res.ret && res.data) {
+            const data = res.data;
+            this.cities = data.cities;
+            this.hotCities = data.hotCities;
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  },
+  mounted() {
+    this.getCityInfo();
   }
 };
 </script>

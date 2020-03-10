@@ -15,6 +15,7 @@ import Swiper from "components/home/Swiper";
 import Icons from "components/home/Icons";
 import Recommend from "components/home/Recommend";
 import Weekend from "components/home/Weekend";
+import { mapState } from "vuex";
 
 export default {
   name: "Home",
@@ -27,16 +28,20 @@ export default {
   },
   data() {
     return {
+      lastCity: "",
       swiperList: [],
       iconsList: [],
       recommendList: [],
       weekendList: []
     };
   },
+  computed: {
+    ...mapState(["city"])
+  },
   methods: {
     getHomeInfo() {
       this.axios
-        .get("/mock/index.json")
+        .get("/mock/index.json?city=" + this.city)
         .then(res => {
           res = res.data;
           if (res.ret && res.data) {
@@ -53,7 +58,16 @@ export default {
     }
   },
   mounted() {
+    this.lastCity = this.city;
     this.getHomeInfo();
+  },
+  // 当页面重新显示的时候被执行
+  activated() {
+    if (this.lastCity !== this.city) {
+      this.lastCity = this.city;
+      this.getHomeInfo();
+    }
+    console.log("activated");
   }
 };
 </script>

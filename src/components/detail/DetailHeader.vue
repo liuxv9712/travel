@@ -25,6 +25,7 @@ export default {
   },
   methods: {
     handleScroll() {
+      console.log("scroll");
       const top = document.documentElement.scrollTop;
       // console.log(document.documentElement.scrollTop);
       if (top > 60) {
@@ -38,8 +39,14 @@ export default {
       }
     }
   },
+  // 每一次页面展示的时候执行 activated 生命周期钩子
+  // 利用 activated 钩子监听 scroll 触发 this.handleScroll。并在 methods 的 handleScroll 中完成渐隐渐现的算法逻辑。（通过 document.documentElement.scrollTop 计算 opacity 属性即可实现该动画效果）
   activated() {
     window.addEventListener("scroll", this.handleScroll);
+  },
+  // 使用 deactivated 生命周期钩子（页面即将被隐藏或替换成其他页面时） 对全局事件解绑
+  deactivated() {
+    window.removeEventListener("scroll", this.handleScroll);
   }
 };
 </script>
@@ -66,10 +73,12 @@ export default {
 
 .header-fixed {
   z-index: 2;
+  // 使用 fixed 定位到浏览器最上方。开始
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  // 结束
   height: 2rem;
   line-height: 2rem;
   text-align: center;

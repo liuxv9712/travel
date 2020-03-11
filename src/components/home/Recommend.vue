@@ -1,8 +1,14 @@
 <template>
   <div>
     <div class="title border-bottom">热销推荐</div>
-    <ul v-for="item in recommendList" :key="item.id">
-      <li class="item">
+    <ul>
+      <router-link
+        class="item border-bottom"
+        v-for="item of recommendList"
+        :key="item.id"
+        :to="'/detail/' + item.id"
+        tag="li"
+      >
         <div class="item-img-wrapper">
           <img :src="item.imgUrl" alt class="item-img" />
         </div>
@@ -11,7 +17,7 @@
           <p class="item-desc">{{item.desc}}</p>
           <button class="item-button">查看详情</button>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
@@ -26,6 +32,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '~styles/varibles.styl';
+
 .title {
   margin-top: 1.5rem;
   line-height: 2rem;
@@ -55,6 +63,7 @@ export default {
 
     // background: green;
     .item-title {
+      color: $bgColor;
       margin-top: 0.2rem;
       font-size: 1.2rem;
       line-height: 2rem;

@@ -5,6 +5,7 @@
         <span class="item-title-icon"></span>
         {{item.title}}
       </div>
+      <!-- 之所以在组件当中需要一个 name 属性，也是为了方便在组件自身调用自身出现递归的时候便于调用。下面可以看到，在下一个 div 标签中做一个 v-if 判断，如果存在 item.children。就把 item.children 当做 list 再传递给自身，进行递归调用 -->
       <div v-if="item.children">
         <detail-list :list="item.children" class="item-children"></detail-list>
       </div>

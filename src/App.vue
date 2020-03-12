@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <keep-alive>
+    <!-- Detail 页禁用 keepalive,detail是Detail.vue定义的name -->
+    <keep-alive exclude="detail">
       <router-view />
     </keep-alive>
     <div id="nav">

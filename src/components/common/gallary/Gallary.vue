@@ -10,8 +10,8 @@
         <!-- 显示小点 -->
         <div class="swiper-pagination" slot="pagination"></div>
         <!-- 左右箭头 -->
-        <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
-        <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
+        <!-- <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div> -->
+        <!-- <div class="swiper-button-next swiper-button-white" slot="button-next"></div> -->
       </swiper>
     </div>
   </div>
@@ -36,14 +36,13 @@ export default {
 
         pagination: {
           el: ".swiper-pagination", //分页器的类名
-          clickable: true, //设置分页小圆点可手动点击
           type: "fraction"
-        },
-
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev"
         }
+
+        // navigation: {
+        //   nextEl: ".swiper-button-next",
+        //   prevEl: ".swiper-button-prev"
+        // }
       }
     };
   },
